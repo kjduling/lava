@@ -19,6 +19,8 @@ A BabylonJS game.
     - [Project building scripts](#project-building-scripts)
   - [Tests](#tests)
     - [Testing script](#testing-script)
+  - [API Documentation](#api-documentation)
+    - [Install typedoc](#install-typedoc)
 
 ## Prerequisites
 
@@ -194,3 +196,23 @@ You can now build the project with `npm run build`.  You can run the project loc
   ```
 
 You can now run the tests with `npm run test`.
+
+## API Documentation
+
+### Install typedoc
+
+```shell
+npm install --save-dev typedoc
+```
+
+Add the `doc` command to `package.json` scripts.  Update `clean` to remove the `docs` directory.
+
+```json
+  "scripts": {
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "build": "npm test && webpack",
+    "serve": "npm test && webpack serve --config webpack.config.dev.js",
+    "doc": "typedoc src/**/*.ts",
+    "clean": "rm -rf docs dist node_modules"
+  },
+  ```
