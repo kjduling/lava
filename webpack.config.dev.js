@@ -16,7 +16,7 @@ module.exports = {
         host: "0.0.0.0", //allows us to access the server from other devices on the network
         port: 8080, //port that we're using for local host (localhost:8080)
         static: path.resolve(appDirectory, "resources"), //tells webpack to serve from the public folder
-        hot: true, //allows us to update the page without refreshing
+        hot: true, //allows us to update the page without restarting the server
         server: 'https', // allows us to use https
         compress: true, //allows us to compress the files
         devMiddleware: {

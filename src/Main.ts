@@ -1,5 +1,5 @@
-import { Engine, Scene, ArcRotateCamera } from '@babylonjs/core/';
-import { Vector3, HemisphericLight, Mesh } from '@babylonjs/core/';
+import { ArcRotateCamera, Engine, HemisphericLight, Mesh, Scene, Vector3 } from '@babylonjs/core';
+
 export class Main {
 
     constructor() {
@@ -9,13 +9,20 @@ export class Main {
         });
     }
 
+    /**
+     * Main entry point
+     */
     public async main(): Promise<void> {
         console.debug("main()")
         const canvas = this.createCanvas();
         this.createScene(canvas);
     }
 
+    /**
+     * Create a canvas
+     */
     private createCanvas(): HTMLCanvasElement {
+        console.debug("createCanvas()");
         const canvas = document.createElement("canvas");
         canvas.style.width = "100%";
         canvas.style.height = "100%";
@@ -24,7 +31,11 @@ export class Main {
         return canvas;
     }
 
-    public createScene(canvas: HTMLCanvasElement): void {
+    /**
+     * Create a scene
+     * @param canvas The canvas to render the scene on
+     */
+    private createScene(canvas: HTMLCanvasElement): void {
         console.debug("createScene()");
         // Create a js engine object
         const engine = new Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
@@ -35,7 +46,7 @@ export class Main {
         // Set the camera to look at the origin
         camera.setTarget(Vector3.Zero());
         // Attach the camera to the canvas
-        camera.attachControl(document.getElementById('renderCanvas') as HTMLCanvasElement, true);
+        camera.attachControl(canvas, true);
         // Create a basic light, aiming 0,1,0 - meaning, to the sky
         const light = new HemisphericLight('light', new Vector3(0, 1, 0), scene);
         // Create a built-in "sphere" shape; its constructor takes 5 params: name, width, depth, subdivisions, scene

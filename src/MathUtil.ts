@@ -12,7 +12,7 @@ export class MathUtil {
     }
 
     /**
-     * Shuffle an array of numbers
+     * Shuffle an array of items
      * @param array An array to shuffle
      * @returns the shuffled array
      */
