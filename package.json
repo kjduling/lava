@@ -7,9 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "test": "jest",
     "build": "npm test && webpack",
-    "serve": "npm test && webpack serve --config webpack.config.dev.js",
+    "serve": "webpack serve --config webpack.config.dev.js",
     "prod": "npm test && webpack serve --config webpack.config.js",
     "doc": "typedoc src/**/*.ts",
     "clean": "rm -rf docs dist node_modules"
@@ -19,16 +19,13 @@
   "devDependencies": {
     "@babylonjs/core": "^6.46.1",
     "@babylonjs/inspector": "^6.46.1",
-    "@types/chai": "^4.3.12",
-    "@types/mocha": "^10.0.6",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.11.27",
-    "chai": "^4.4.1",
-    "compression-webpack-plugin": "^11.1.0",
     "copy-webpack-plugin": "^12.0.2",
     "html-webpack-plugin": "^5.6.0",
-    "mocha": "^10.3.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.1",
-    "ts-node": "^10.9.2",
     "typedoc": "^0.25.12",
     "typescript": "^5.4.2",
     "webpack": "^5.90.3",

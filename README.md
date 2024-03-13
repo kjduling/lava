@@ -59,7 +59,7 @@ npm install --save-dev typescript
 #### Installing Webpack
 
 ```shell
-npm install --save-dev webpack webpack-cli webpack-dev-server copy-webpack-plugin html-webpack-plugin compression-webpack-plugin ts-loader
+npm install --save-dev webpack webpack-cli webpack-dev-server copy-webpack-plugin html-webpack-plugin ts-loader
 ```
 
 - webpack
@@ -68,18 +68,14 @@ npm install --save-dev webpack webpack-cli webpack-dev-server copy-webpack-plugi
 - copy-webpack-plugin
 - html-webpack-plugin
 - ts-loader
-- ts-node??
-- jsdoc/js-doc??
 
 #### Install testing framework
 
 ```shell
-npm install --save-dev chai@4
-npm install --save-dev @types/chai
-npm install --save-dev mocha
-npm install --save-dev @types/mocha
-npm install --save-dev ts-node
+npm install --save-dev jest ts-jest @types/jest
 ```
+
+Add this `jest.config.js` file to the root of the project. [https://github.com/RaananW/babylonjs-webpack-es6/blob/master/jest.config.js](https://github.com/RaananW/babylonjs-webpack-es6/blob/master/jest.config.js)
 
 ### Project cleaning script
 
@@ -188,7 +184,7 @@ You can now build the project with `npm run build`.  You can run the project loc
 
 ```json
   "scripts": {
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "test": "jest",
     "build": "npm test && webpack",
     "serve": "npm test && webpack serve --config webpack.config.dev.js",
     "clean": "rm -rf dist node_modules"
@@ -209,7 +205,7 @@ Add the `doc` command to `package.json` scripts.  Update `clean` to remove the `
 
 ```json
   "scripts": {
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "test": "jest",
     "build": "npm test && webpack",
     "serve": "npm test && webpack serve --config webpack.config.dev.js",
     "doc": "typedoc src/**/*.ts",

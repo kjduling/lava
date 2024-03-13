@@ -74,7 +74,6 @@ export class Main {
         // hide/show the Inspector
         window.addEventListener("keydown", (ev) => {
             // Shift+Ctrl+Alt+I
-            // keyCode 73 = I, need to use this because ev.key === "I" doesn't work on a Mac
             if (ev.shiftKey && ev.ctrlKey && ev.altKey && ev.code === "KeyI") {
                 if (this.scene.debugLayer.isVisible()) {
                     this.scene.debugLayer.hide();
@@ -95,6 +94,14 @@ export class Main {
         window.addEventListener('resize', () => {
             this.engine.resize();
         });
+    }
+
+    /**
+     * Get the scene
+     * @returns The scene
+     */
+    public getScene(): Scene {
+        return this.scene;
     }
 }
 const main = new Main();
