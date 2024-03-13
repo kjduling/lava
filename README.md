@@ -13,6 +13,8 @@ A BabylonJS game.
       - [Install testing framework](#install-testing-framework)
     - [Project cleaning script](#project-cleaning-script)
     - [Configure TypeScript](#configure-typescript)
+  - [Source directories](#source-directories)
+  - [Index.html](#indexhtml)
   - [Build](#build)
     - [Project building scripts](#project-building-scripts)
   - [Tests](#tests)
@@ -27,21 +29,7 @@ A BabylonJS game.
 ### Project Configuration
 
 ```shell
-npm init
-```
-
-These are the values I give:
-
-```txt
-package name: (lava) 
-version: (1.0.0) 
-description: A BabylonJS game
-entry point: (index.js) 
-test command:
-git repository:
-keywords:
-author:
-license: (ISC) 
+npm init -y
 ```
 
 ### Development Packages
@@ -84,10 +72,11 @@ npm install --save-dev webpack webpack-cli webpack-dev-server copy-webpack-plugi
 #### Install testing framework
 
 ```shell
-npm install --save-dev chai
+npm install --save-dev chai@4
 npm install --save-dev @types/chai
 npm install --save-dev mocha
 npm install --save-dev @types/mocha
+npm install --save-dev ts-node
 ```
 
 ### Project cleaning script
@@ -132,6 +121,45 @@ This creates a `tsconfig.json` file.  If you look at this file, there are a lot 
     "./dist/"
   ],
 }
+```
+
+## Source directories
+
+We need to create the following directories:
+
+- src
+- src/public
+- tests
+
+```shell
+mkdir -p src/public tests
+```
+
+## Index.html
+
+In the `src` directory, create a new file called `index.html` with the following:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>base</title>
+    </head>
+    <body>
+    </body>
+    <style>
+        html, body {
+            background-color: #f0f0f0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</html>
 ```
 
 ## Build
