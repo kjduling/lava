@@ -216,3 +216,14 @@ Add the `doc` command to `package.json` scripts.  Update `clean` to remove the `
     "clean": "rm -rf docs dist node_modules"
   },
   ```
+
+Update `tsconfig.json` to exclude `docs`.
+
+```json
+  "exclude": [
+    "./tests/",
+    "./node_modules/",
+    "./dist/",
+    "./docs/"
+  ],
+```
