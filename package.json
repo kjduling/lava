@@ -12,7 +12,7 @@
     "serve": "webpack serve --config webpack.config.dev.js",
     "prod": "npm test && webpack serve --config webpack.config.js",
     "doc": "typedoc src/**/*.ts",
-    "clean": "rm -rf docs dist node_modules"
+    "clean": "rm -rf coverage docs dist node_modules"
   },
   "author": "",
   "license": "ISC",
