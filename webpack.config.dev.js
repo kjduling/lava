@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = {
-    entry: path.resolve(appDirectory, "src/main.ts"), //path to the main .ts file
+    entry: path.resolve(appDirectory, "./src/Main.ts"), //path to the main .ts file
     output: {
         filename: "js/bundleName.js", //name for the js file that is created/compiled in memory
         clean: true, //cleans the dist folder before each build
@@ -35,7 +35,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             inject: true, //injects the js file into the html file
-            template: path.resolve(appDirectory, "src/index.html"), //path to the html file
+            template: path.resolve(appDirectory, "./src/index.html"), //path to the html file
         })
     ],
     mode: "development", //tells webpack to run in development mode
