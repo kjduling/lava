@@ -11,6 +11,7 @@ A BabylonJS game.
       - [Installing TypeScript](#installing-typescript)
       - [Installing Webpack](#installing-webpack)
       - [Install testing framework](#install-testing-framework)
+        - [Code Coverage](#code-coverage)
     - [Project cleaning script](#project-cleaning-script)
     - [Configure TypeScript](#configure-typescript)
   - [Source directories](#source-directories)
@@ -19,8 +20,6 @@ A BabylonJS game.
     - [Project building scripts](#project-building-scripts)
   - [Tests](#tests)
     - [Testing script](#testing-script)
-  - [API Documentation](#api-documentation)
-    - [Install typedoc](#install-typedoc)
 
 ## Prerequisites
 
@@ -75,7 +74,15 @@ npm install --save-dev webpack webpack-cli webpack-dev-server copy-webpack-plugi
 npm install --save-dev jest ts-jest @types/jest
 ```
 
+##### Code Coverage
+
 Add this `jest.config.js` file to the root of the project. [https://github.com/RaananW/babylonjs-webpack-es6/blob/master/jest.config.js](https://github.com/RaananW/babylonjs-webpack-es6/blob/master/jest.config.js)
+
+Edit `jest.config.js` and enable code coverage:
+
+```json
+    collectCoverage: true,
+```
 
 ### Project cleaning script
 
@@ -168,8 +175,8 @@ In the `src` directory, create a new file called `index.html` with the following
 
 ```json
   "scripts": {
-    "build": "npm test && webpack",
-    "serve": "npm test && webpack serve --config webpack.config.dev.js",
+    "build": "webpack",
+    "serve": "webpack serve --config webpack.config.dev.js",
     "clean": "rm -rf dist node_modules"
   },
   ```
@@ -185,11 +192,21 @@ You can now build the project with `npm run build`.  You can run the project loc
 ```json
   "scripts": {
     "test": "jest",
-    "build": "npm test && webpack",
-    "serve": "npm test && webpack serve --config webpack.config.dev.js",
-    "clean": "rm -rf dist node_modules"
+    "build": "webpack",
+    "serve": "webpack serve --config webpack.config.dev.js",
+    "clean": "rm -rf coverage dist node_modules"
   },
   ```
+
+Update `tsconfig.json` to exclude `coverage`.
+
+```json
+  "exclude": [
+    "./tests/",
+    "./node_modules/",
+    "./dist/",
+    "./coverage"
+  ],
 
 You can now run the tests with `npm run test`.
 
@@ -209,7 +226,7 @@ Add the `doc` command to `package.json` scripts.  Update `clean` to remove the `
     "build": "npm test && webpack",
     "serve": "npm test && webpack serve --config webpack.config.dev.js",
     "doc": "typedoc src/**/*.ts",
-    "clean": "rm -rf docs dist node_modules"
+    "clean": "rm -rf coverage docs dist node_modules"
   },
   ```
 
@@ -220,6 +237,7 @@ Update `tsconfig.json` to exclude `docs`.
     "./tests/",
     "./node_modules/",
     "./dist/",
+    "./coverage",
     "./docs/"
   ],
 ```

@@ -37,11 +37,11 @@ jobs:
     - name: 📦 install dependencies
       run: npm ci
 
-    - name: 🔨 build
-      run: npm run build
-
     - name: 🧪 test
       run: npm test
+
+    - name: 🔨 build
+      run: npm run build
 
     - name: 🗃️ reconstitute node_modules for production
       run: |
